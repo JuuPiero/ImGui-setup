@@ -2,17 +2,18 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+
 ImGuiLayer::ImGuiLayer() {
 
 }
 void ImGuiLayer::Initialize() {
-    // // Thiết lập ImGui context
-    // IMGUI_CHECKVERSION();
-    // ImGui::CreateContext();
-    // ImGuiIO& io = ImGui::GetIO(); (void)io;
+    // Thiết lập ImGui context
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-    // // Thiết lập style của ImGui
-    // ImGui::StyleColorsDark();
+    // Thiết lập style của ImGui
+    ImGui::StyleColorsDark();
 
 }
 

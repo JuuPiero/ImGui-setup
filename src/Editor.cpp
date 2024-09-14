@@ -22,7 +22,7 @@ void Editor::Run() {
         glClear(GL_COLOR_BUFFER_BIT);
         m_ImGuiLayer->BeginFrame();
 
-        Render();
+        RenderUI();
         
         m_ImGuiLayer->EndFrame();
         glfwGetFramebufferSize(m_Window, &m_Props.Width, &m_Props.Height);

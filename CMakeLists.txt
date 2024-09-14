@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 set (CMAKE_CXX_STANDARD 20)
 
-project(TextEditor)
+project(Sanbox)
 
 file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*/*.cpp" "vendor/ImGui/src/*.cpp")
 

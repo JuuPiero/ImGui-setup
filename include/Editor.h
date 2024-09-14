@@ -8,5 +8,5 @@ public:
 
     void Run() override;
     void Shutdown() override;
-    void Render();
+    void RenderUI();
 };
