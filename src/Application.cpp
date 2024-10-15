@@ -1,7 +1,5 @@
 #define STB_IMAGE_IMPLEMENTATION
 #define GLAD_GL_IMPLEMENTATION
-// #define GLFW_INCLUDE_NONE
-
 #include "Application.h"
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
@@ -13,6 +11,9 @@
 Application::Application(ApplicationProperties props): m_Props(props) {
     m_ImGuiLayer = new ImGuiLayer();
     Initialize();
+}
+Application::~Application() {
+    Shutdown();
 }
 
 void Application::Initialize() {
@@ -35,11 +36,8 @@ void Application::Initialize() {
     glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) {
         
     });
-  
-    // ImGui_ImplGlfw_InitForOpenGL(m_Window, true);
-    // ImGui_ImplOpenGL3_Init("#version 330");
 
-     // Thiết lập ImGui context
+    // Thiết lập ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
@@ -53,4 +51,33 @@ void Application::Initialize() {
     m_ImGuiLayer->Initialize();
 
 }
+void Application::Shutdown() {
+    delete m_ImGuiLayer;
+    glfwDestroyWindow(m_Window);
+    glfwTerminate();
+    std::cout << "Quitting the application" << std::endl;
+}
 
+void Application::Run() {
+    while(!glfwWindowShouldClose(m_Window)) {
+        glClearColor(0.45f, 0.55f, 0.60f, 1.00f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        Render();
+        m_ImGuiLayer->BeginFrame();
+
+        RenderUI();
+        
+        m_ImGuiLayer->EndFrame();
+        glfwGetFramebufferSize(m_Window, &m_Props.Width, &m_Props.Height);
+        glfwSwapBuffers(m_Window);
+        glfwPollEvents();
+    }
+}
+
+void Application::Render() {
+
+}
+
+void Application::RenderUI() {
+
+}

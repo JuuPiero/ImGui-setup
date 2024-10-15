@@ -9,10 +9,12 @@ struct ApplicationProperties {
 class Application {
 public:
     Application(ApplicationProperties props);
+    virtual ~Application();
     void Initialize();
-    virtual void Run() = 0;
-    virtual void Shutdown() = 0;
-    virtual ~Application() = default;
+    virtual void Shutdown();
+    virtual void Run();
+    virtual void Render();
+    virtual void RenderUI();
 protected:
     ApplicationProperties m_Props;
     GLFWwindow* m_Window;
