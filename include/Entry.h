@@ -2,11 +2,11 @@
 #include "Application.h"
 #include "Utils.h"
 extern Application* CreateApplication();
-extern 
+extern Shared<Application> CreateApp();
 
 int main(int argc, char** argv) {
-    auto app = CreateApplication();
+    auto app = CreateApp();
     app->Run();
-    delete app;
+    // delete app;
     return 0;
 }

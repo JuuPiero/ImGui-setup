@@ -37,18 +37,11 @@ void Application::Initialize() {
         
     });
 
-    // Thiết lập ImGui context
-    IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
-
-    // Thiết lập style của ImGui
-    ImGui::StyleColorsDark();
+    m_ImGuiLayer->Initialize();
 
     // Thiết lập backends
     ImGui_ImplGlfw_InitForOpenGL(m_Window, true);
-    ImGui_ImplOpenGL3_Init("#version 330");
-    m_ImGuiLayer->Initialize();
+    ImGui_ImplOpenGL3_Init("#version 410");
 
 }
 void Application::Shutdown() {
@@ -79,5 +72,5 @@ void Application::Render() {
 }
 
 void Application::RenderUI() {
-
+    ImGui::ShowDemoWindow();
 }

@@ -10,7 +10,10 @@ void ImGuiLayer::Initialize() {
     // Thiết lập ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+
     ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    // io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
     // Thiết lập style của ImGui
     ImGui::StyleColorsDark();
