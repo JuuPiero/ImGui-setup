@@ -15,6 +15,8 @@ public:
     virtual void Run();
     virtual void Render();
     virtual void RenderUI();
+    inline const ApplicationProperties& Properties() const { return m_Props; }
+    
 protected:
     ApplicationProperties m_Props;
     GLFWwindow* m_Window;

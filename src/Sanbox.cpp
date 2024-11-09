@@ -25,13 +25,15 @@ Shared<Application> CreateApp() {
 Sanbox::Sanbox(ApplicationProperties props): Application(props) {
     PrintLn("Creating Sanbox");
 }
-
 void Sanbox::RenderUI() {
+    ImGui::DockSpaceOverViewport(0U, ImGui::GetMainViewport());
     Application::RenderUI();
+    
     // Tạo một cửa sổ ví dụ
-    // ImGui::Begin("Hello, ImGui with Docking!");
-    //     ImGui::Text("Đây là một cửa sổ ví dụ với tính năng docking.");
+    // ImGui::Begin("Docking Demo");
+    // ImGui::Text("Hello, Docking!");
     // ImGui::End();
+    // Tạo cửa sổ Dockspace
     // static float test[2];
     // ImGui::Begin("Drag");
     //     ImGui::DragFloat2("Test", test);
