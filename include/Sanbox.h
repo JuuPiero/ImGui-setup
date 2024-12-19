@@ -6,5 +6,4 @@ public:
     Sanbox(ApplicationProperties props);
     void RenderUI() override; 
     void Render() override;
-
 };

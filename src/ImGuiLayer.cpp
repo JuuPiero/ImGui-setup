@@ -13,8 +13,8 @@ void ImGuiLayer::Initialize() {
 
     ImGuiIO& io = ImGui::GetIO();
     // io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;  // Cho phép điều khiển bằng bàn phím
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;      // Kích hoạt tính năng docking
-    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; 
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
     // Thiết lập style của ImGui
     ImGui::StyleColorsDark();
