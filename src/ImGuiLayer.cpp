@@ -3,8 +3,8 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
-ImGuiLayer::ImGuiLayer(ApplicationProperties* properties) {
-
+ImGuiLayer::ImGuiLayer(ApplicationProperties* properties): properties(properties) {
+    
 }
 void ImGuiLayer::Initialize() {
     // Thiết lập ImGui context
@@ -42,7 +42,7 @@ void ImGuiLayer::BeginFrame() {
 void ImGuiLayer::EndFrame() {
     ImGuiIO& io = ImGui::GetIO();
     // auto app = glfwGetWindowUserPointer()
-    io.DisplaySize = ImVec2(properties->Width, properties->Height);
+    io.DisplaySize = ImVec2(this->properties->Width, properties->Height);
  
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -53,5 +53,4 @@ void ImGuiLayer::EndFrame() {
         ImGui::RenderPlatformWindowsDefault();
         glfwMakeContextCurrent(backupCtx);
     }
-  
 }

@@ -13,8 +13,8 @@ public:
     void Initialize();
     virtual void Shutdown();
     virtual void Run();
-    virtual void Render();
-    virtual void RenderUI();
+    virtual void Render(double deltaTime);
+    virtual void RenderUI(double deltaTime);
     inline const ApplicationProperties& Properties() const { return m_Props; }
     
 protected:

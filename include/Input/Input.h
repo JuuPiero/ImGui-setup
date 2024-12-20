@@ -19,5 +19,6 @@ private:
     static std::unordered_map<unsigned int, bool> keys;
     static std::unordered_map<unsigned int, bool> buttons;
     static glm::vec2 cursorPosition;
+    static glm::vec2 lastCursorPosition;
     // static glm::vec2 delta;
 };

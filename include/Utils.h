@@ -10,7 +10,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <stb_image.h>
 
-#include <spdlog/spdlog.h>
+// #include <spdlog/spdlog.h>
 
 #include <cstdlib>
 #include <stdlib.h>
@@ -37,6 +37,7 @@
 
 
 #define PrintLn(mess) std::cout << mess << std::endl
+#define count(arr) (sizeof(arr) / sizeof(arr[0]))
 
 inline std::string GetFileContents(const char* filePath) {
     std::ifstream ifs(filePath);
@@ -45,6 +46,6 @@ inline std::string GetFileContents(const char* filePath) {
     return content;
 }
 
-template <typename T> using Unique = std::unique_ptr<T>;
-template <typename T> using Shared = std::shared_ptr<T>;
-template <typename T> using Weak = std::weak_ptr<T>;
+template<typename T> using Unique = std::unique_ptr<T>;
+template<typename T> using Shared = std::shared_ptr<T>;
+template<typename T> using Weak = std::weak_ptr<T>;

@@ -8,6 +8,8 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "ImGuiLayer.h"
+
+#include "Input/Input.h"
 Application::Application(ApplicationProperties props): m_Props(props) {
     m_ImGuiLayer = new ImGuiLayer(&m_Props);
     Initialize();
@@ -45,6 +47,8 @@ void Application::Initialize() {
         app->m_Props.Height = height;
     });
 
+    glfwSetCursorPosCallback(m_Window, &Input::MouseCallback);
+
     m_ImGuiLayer->Initialize();
 
     // Thiết lập backends
@@ -60,13 +64,22 @@ void Application::Shutdown() {
 }
 
 void Application::Run() {
+
+    double startTime = glfwGetTime();
+
     while(!glfwWindowShouldClose(m_Window)) {
         glfwPollEvents();
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        double currentTime = glfwGetTime();
+        double deltaTime = currentTime - startTime;
+        startTime = currentTime;
+        // double fps = 1.0f / (deltaTime/ 1000.0f);
         m_ImGuiLayer->BeginFrame();
-        Render();
-        RenderUI();
+
+        Render(deltaTime);
+        RenderUI(deltaTime);
         
         m_ImGuiLayer->EndFrame();
         // glfwGetFramebufferSize(m_Window, &m_Props.Width, &m_Props.Height);
@@ -74,10 +87,10 @@ void Application::Run() {
     }
 }
 
-void Application::Render() {
+void Application::Render(double deltaTime) {
 
 }
 
-void Application::RenderUI() {
+void Application::RenderUI(double deltaTime) {
     ImGui::ShowDemoWindow();
 }
