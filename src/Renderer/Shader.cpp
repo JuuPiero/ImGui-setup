@@ -1,5 +1,5 @@
 #include "Renderer/Shader.h"
-
+#include "Utils.h"
 Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath): m_vertexShaderPath(vertexShaderPath), m_fragmentShaderPath(fragmentShaderPath) {
     const char* vertexShaderSource = GetFileContents(vertexShaderPath).c_str();
     uint32_t vertexShader = glCreateShader(GL_VERTEX_SHADER);

@@ -48,6 +48,11 @@ void Application::Initialize() {
     });
 
     glfwSetCursorPosCallback(m_Window, &Input::MouseCallback);
+    glfwSetKeyCallback(m_Window, &Input::KeyListenerCallback);
+
+    glEnable(GL_DEPTH_TEST); 
+    // glEnable(GL_BLEND);
+    // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
 
     m_ImGuiLayer->Initialize();
 
@@ -70,16 +75,16 @@ void Application::Run() {
     while(!glfwWindowShouldClose(m_Window)) {
         glfwPollEvents();
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         double currentTime = glfwGetTime();
         double deltaTime = currentTime - startTime;
         startTime = currentTime;
-        // double fps = 1.0f / (deltaTime/ 1000.0f);
         m_ImGuiLayer->BeginFrame();
 
         Render(deltaTime);
         RenderUI(deltaTime);
+        HandleInput(deltaTime);
         
         m_ImGuiLayer->EndFrame();
         // glfwGetFramebufferSize(m_Window, &m_Props.Width, &m_Props.Height);
@@ -93,4 +98,8 @@ void Application::Render(double deltaTime) {
 
 void Application::RenderUI(double deltaTime) {
     ImGui::ShowDemoWindow();
+}
+
+void Application::HandleInput(double deltaTime) {
+
 }

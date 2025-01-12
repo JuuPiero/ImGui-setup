@@ -15,7 +15,9 @@ public:
     virtual void Run();
     virtual void Render(double deltaTime);
     virtual void RenderUI(double deltaTime);
+    virtual void HandleInput(double deltaTime);
     inline const ApplicationProperties& Properties() const { return m_Props; }
+    inline GLFWwindow* GetWindow() const { return m_Window; }
     
 protected:
     ApplicationProperties m_Props;

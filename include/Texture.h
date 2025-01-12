@@ -16,6 +16,7 @@ public:
 
     inline void Bind() { glBindTexture(GL_TEXTURE_2D, m_Id); }
     inline void Unbind() { glBindTexture(GL_TEXTURE_2D, 0); }
+    inline void Active(unsigned int unit = 0) { glActiveTexture(GL_TEXTURE0 + unit); }
 
 private:
     unsigned int m_Id;
